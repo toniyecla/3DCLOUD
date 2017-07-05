@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--[if IE 9]>         <html class="no-js lt-ie10" lang="es"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="es"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+
+        <title>3D Contract</title>
+
+        <meta name="description" content="3D Contract">
+        <meta name="author" content="3D Contract">
+        <meta name="robots" content="noindex, nofollow">
+
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <meta http-equiv="Content-Security-Policy" content="default-src * gap: ws: https://ssl.gstatic.com;img-src * 'self' data: content:;font-src *;style-src 'self' 'unsafe-inline' http://fonts.googleapis.com data: blob:;script-src * 'unsafe-inline' 'unsafe-eval' data: blob:;">
+
+        <!-- Icons -->
+        <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+        <link rel="shortcut icon" href="img/favicon.png">
+        <link rel="apple-touch-icon" href="img/icon57.png" sizes="57x57">
+        <link rel="apple-touch-icon" href="img/icon72.png" sizes="72x72">
+        <link rel="apple-touch-icon" href="img/icon76.png" sizes="76x76">
+        <link rel="apple-touch-icon" href="img/icon114.png" sizes="114x114">
+        <link rel="apple-touch-icon" href="img/icon120.png" sizes="120x120">
+        <link rel="apple-touch-icon" href="img/icon144.png" sizes="144x144">
+        <link rel="apple-touch-icon" href="img/icon152.png" sizes="152x152">
+        <link rel="apple-touch-icon" href="img/icon180.png" sizes="180x180">
+        <!-- END Icons -->
+
+        <!-- Stylesheets -->
+        <!-- Bootstrap is included in its original form, unaltered -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+
+        <!-- Related styles of various icon packs and plugins -->
+        <link rel="stylesheet" href="css/plugins.css">
+
+        <!-- The main stylesheet of this template. All Bootstrap overwrites are defined in here -->
+        <link rel="stylesheet" href="css/main.css">
+
+        <!-- Include a specific file here from css/themes/ folder to alter the default theme of the template -->
+
+        <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
+        <link rel="stylesheet" href="css/themes.css">
+        <!-- END Stylesheets -->
+
+        <link rel="stylesheet" type="text/css" href="css/local.css" />
+    </head>
+    <body>
+        <div id="splash-logo">
+            <img class="logo-login" src="img/logo-splash.jpg">
+        </div>
+
+    <!--
+        <div id="splash-logo">
+            <div class="row" style="margin-top: -100px">
+                <div class="col-xs">
+                    <img class="logo-login" src="img/logo-splash.jpg" width="50%" onclick="openUrl()">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 text-center" style="margin-top: 20px; cursor: pointer" onclick="openUrl()">
+                    <h4 class="heading"><span>ABRIR&nbsp;3D&nbsp;CONTRACT</span></h4>
+                </div>
+
+                <div class="col-md-12 text-center" style="margin-top: 50px; cursor: pointer" onclick="salir()">
+                    <h5 class="heading"><span>CERRAR&nbsp;APLICACIÓN</span></h5>
+                </div>
+            </div>
+
+        </div>
+    -->
+
+    <div id="page-wrapper">
+        <!-- Page Container -->
+        <!-- In the PHP version you can set the following options from inc/config file -->
+        <!--
+            Available #page-container classes:
+
+            'sidebar-light'                                 for a light main sidebar (You can add it along with any other class)
+
+            'sidebar-visible-lg-mini'                       main sidebar condensed - Mini Navigation (> 991px)
+            'sidebar-visible-lg-full'                       main sidebar full - Full Navigation (> 991px)
+
+            'sidebar-alt-visible-lg'                        alternative sidebar visible by default (> 991px) (You can add it along with any other class)
+
+            'header-fixed-top'                              has to be added only if the class 'navbar-fixed-top' was added on header.navbar
+            'header-fixed-bottom'                           has to be added only if the class 'navbar-fixed-bottom' was added on header.navbar
+
+            'fixed-width'                                   for a fixed width layout (can only be used with a static header/main sidebar layout)
+
+            'enable-cookies'                                enables cookies for remembering active color theme when changed from the sidebar links (You can add it along with any other class)
+        -->
+        <div id="page-container" class="page-loading">
+
+            <div id="status-message"></div>
+
+            <!-- Preloader -->
+            <!-- Preloader functionality (initialized in js/app.js) - pageLoading() -->
+            <!-- Used only if page preloader enabled from inc/config (PHP version) or the class 'page-loading' is added in #page-wrapper element (HTML version) -->
+            <div class="preloader">
+                <div class="inner">
+                    <!-- Animation spinner for all modern browsers -->
+                    <div class="preloader-spinner themed-background hidden-lt-ie10"></div>
+
+                    <!-- Text for IE9 -->
+                    <h3 class="text-primary visible-lt-ie10"><strong>Loading..</strong></h3>
+                </div>
+            </div>
+            <!-- END Preloader -->
+
+            <!-- Main Container -->
+            <div id="main-container" class="full"></div>
+            <!-- END Main Container -->
+        </div>
+        <!-- END Page Container -->
+    </div>
+    <!-- END Page Wrapper -->
+
+        <!-- jQuery, Bootstrap, jQuery plugins and Custom JS code -->
+        <script type="text/javascript" src="js/vendor/jquery-2.2.4.min.js"></script>
+        <!--<script type="text/javascript" src="js/vendor/jquery.mobile-1.4.5.min.js"></script>-->
+        <script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
+        <!-- Modernizr (browser feature detection library) -->
+        <script type="text/javascript" src="js/vendor/modernizr-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/plugins.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+
+        <script type="text/javascript">
+            var inAppBrowserRef;
+
+            function init() {
+                document.removeEventListener('backbutton', this.onBackButton, true);
+
+                openUrl();
+
+                // if ($("#year-copy").length) $('#year-copy').parent().append('<p>ver. 1.0</p>');
+
+                // $('#main-container').load('http://www.3dcontract.com?callback=?');
+            }
+
+            window.onload = function() {
+                console.log("window.onload");
+                $.ajaxSetup({ cache: false });
+            }
+
+            function openUrl() {
+                var native = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+                if (native) {
+                    window.open = cordova.InAppBrowser.open;
+                    showUrl("http://www.3dcontract.com");
+                }
+            }
+
+            function showUrl(url) {
+                var target = "_blank";
+                var options = "location=no,hidden=yes,toolbar=no";
+
+                inAppBrowserRef = cordova.InAppBrowser.open(url, target, options);
+                inAppBrowserRef.addEventListener('loadstart', loadStartCallBack);
+                inAppBrowserRef.addEventListener('loadstop', loadStopCallBack);
+                inAppBrowserRef.addEventListener('loaderror', loadErrorCallBack);
+                inAppBrowserRef.addEventListener('exit', exitCallBack);
+            }
+
+            function loadStartCallBack() {
+                $('#status-message').text("");
+            }
+
+            function loadStopCallBack() {
+                if (inAppBrowserRef != undefined) {
+                    inAppBrowserRef.insertCSS({ code: "body{font-size: 25px;" });
+                    $('#status-message').text("");
+                    inAppBrowserRef.show();
+                }
+            }
+
+            function loadErrorCallBack(params) {
+                $('#status-message').text("");
+                var scriptErrorMesssage = "alert('¡Ops! No puedo cargar el contenido (" + params.message + ")');";
+
+                inAppBrowserRef.executeScript({ code: scriptErrorMesssage }, executeScriptCallBack);
+                inAppBrowserRef.close();
+                inAppBrowserRef = undefined;
+            }
+
+            function executeScriptCallBack(params) {
+                if (params[0] == null) {
+                    $('#status-message').text("¡Ops! No puedo acceder al contenido (" + params.message + ")");
+                }
+            }
+
+            function exitCallBack() {
+                // salir();
+            }
+
+            function salir() {
+                if (navigator.app) {
+                    navigator.app.exitApp();
+                } else if (navigator.device) {
+                    navigator.device.exitApp();
+                }
+            }
+        </script>
+        <script type="text/javascript" src="js/local.js"></script>
+    </body>
+</html>
